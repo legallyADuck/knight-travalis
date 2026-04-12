@@ -1,13 +1,48 @@
-let columns = new Map(); // numbers
-let rows = new Map(); // letters
+class Chessboard {
+  constructor() {
+    this.matrix = [];
+  }
 
-for (i = 0; i < 8; i++) {
-  columns.set(String.fromCharCode(i + 49), false);
+  create() {
+    for (let i = 0; i < 8; i++) {
+      let column = [];
+      for (let j = 0; j < 8; j++) column.push(0);
+      this.matrix.push(column);
+    }
+
+    return this.matrix;
+  }
 }
 
-for (i = 0; i < 8; i++) {
-  rows.set(String.fromCharCode(i + 65), columns);
+class Knight {
+  knightMoves(position, goal) {
+    queue = []
+    queue.push(this.possibleMoves(position))
+
+    while (!shortestFound) {
+      
+    }
+  }
+
+  possibleMoves(currentPosition) {
+    x = currentPosition[0];
+    y = currentPosition[1];
+    return [
+      // dx1 dy1
+      [x - 2, y - 1],
+      [x - 2, y + 1],
+      [x + 2, y - 1],
+      [x + 2, y + 1],
+      // dx2 dy2
+      [x - 1, y - 2],
+      [x - 1, y + 2],
+      [x + 1, y - 2],
+      [x + 1, y + 2],
+    ];
+  }
 }
 
-console.log(rows);
+let chessboard = new Chessboard();
+chessboard.create();
 
+console.log(chessboard.matrix);
