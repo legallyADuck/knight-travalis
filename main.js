@@ -16,33 +16,51 @@ class Chessboard {
 
 class Knight {
   knightMoves(position, goal) {
-    queue = []
-    queue.push(this.possibleMoves(position))
+    let queue = [];
+    queue.push(this.possibleMoves(position));
 
-    while (!shortestFound) {
-      
-    }
+    console.log("queue:", queue);
+    // while () {}
   }
 
-  possibleMoves(currentPosition) {
-    x = currentPosition[0];
-    y = currentPosition[1];
-    return [
-      // dx1 dy1
-      [x - 2, y - 1],
-      [x - 2, y + 1],
-      [x + 2, y - 1],
-      [x + 2, y + 1],
-      // dx2 dy2
-      [x - 1, y - 2],
-      [x - 1, y + 2],
-      [x + 1, y - 2],
-      [x + 1, y + 2],
-    ];
+  possibleMoves(currentPosition, lastMove) {
+    let lastMoves = new Map();
+    const x = currentPosition[0];
+    const y = currentPosition[1];
+    if (lastMove) {
+      lastMoves.set
+    }
+
+
+    let knight = {
+      steps: 0,
+      possibleMoves: [
+        // dx1 dy1
+        [x - 2, y - 1],
+        [x - 2, y + 1],
+        [x + 2, y - 1],
+        [x + 2, y + 1],
+        // dx2 dy2
+        [x - 1, y - 2],
+        [x - 1, y + 2],
+        [x + 1, y - 2],
+        [x + 1, y + 2],
+      ],
+    };
+
+    knight.possibleMoves = knight.possibleMoves.filter((move) => {
+      let x = move[0];
+      let y = move[1];
+      if (lastMoves.includes(move)) return;
+      if (x >= 0 && x <= 7 && y >= 0 && y <= 7) return true;
+    });
+
+    return knight;
   }
 }
 
 let chessboard = new Chessboard();
 chessboard.create();
 
-console.log(chessboard.matrix);
+let knight = new Knight();
+knight.knightMoves([3, 2]);
